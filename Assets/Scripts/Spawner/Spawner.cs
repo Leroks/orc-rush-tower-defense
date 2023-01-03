@@ -24,6 +24,13 @@ public class Spawner : MonoBehaviour
     private float spawnTimer;
     private int enemiesSpawned;
 
+    private ObjectPooler objectPooler;
+
+    private void Start()
+    {
+        objectPooler = GetComponent<ObjectPooler>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -41,9 +48,11 @@ public class Spawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        Instantiate(testGO, transform.position, Quaternion.identity);
+        GameObject enemy = objectPooler.GetPooledObject();
+        enemy.SetActive(true);
     }
 
+    // Returns the delay between spawns based on the spawn mode
     private float GetSpawnDelay()
     {
         switch (spawnMode)
@@ -57,6 +66,7 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    // Returns a random delay between the min and max values
     private float GetRandomDelay()
     {
         return Random.Range(minRandomDelay, maxRandomDelay);
