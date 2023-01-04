@@ -20,10 +20,9 @@ public class Waypoint : MonoBehaviour
         gameStarted = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    public Vector3 GetWaypointPosition(int index)
     {
-
+        return points[index] + currentPosition;
     }
 
     private void OnDrawGizmos()
