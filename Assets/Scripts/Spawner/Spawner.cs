@@ -12,7 +12,7 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private SpawnModes spawnMode = SpawnModes.Fixed;
     [SerializeField] private int enemyCount = 10;
-    [SerializeField] private GameObject testGO;
+    [SerializeField] private float delayBetweenWaves = 1f;
 
     [Header("Fixed Delay")]
     [SerializeField] private float delayBetweenSpawns;
@@ -23,12 +23,17 @@ public class Spawner : MonoBehaviour
 
     private float spawnTimer;
     private int enemiesSpawned;
+    private int enemiesRemaining;
 
     private ObjectPooler objectPooler;
+    private Waypoint waypoint;
 
     private void Start()
     {
         objectPooler = GetComponent<ObjectPooler>();
+        waypoint = GetComponent<Waypoint>();
+
+        enemiesRemaining = enemyCount;
     }
 
     // Update is called once per frame
@@ -48,8 +53,13 @@ public class Spawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        GameObject enemy = objectPooler.GetPooledObject();
-        enemy.SetActive(true);
+        GameObject enemyInstance = objectPooler.GetPooledObject();
+        Enemy enemy = enemyInstance.GetComponent<Enemy>();
+        enemy.Waypoint = waypoint;
+        enemy.ResetEnemy();
+
+        enemy.transform.localPosition = transform.position;
+        enemyInstance.SetActive(true);
     }
 
     // Returns the delay between spawns based on the spawn mode
@@ -70,5 +80,33 @@ public class Spawner : MonoBehaviour
     private float GetRandomDelay()
     {
         return Random.Range(minRandomDelay, maxRandomDelay);
+    }
+
+    private IEnumerator NextWave()
+    {
+        yield return new WaitForSeconds(delayBetweenWaves);
+        enemiesRemaining = enemyCount;
+        spawnTimer = 0;
+        enemiesSpawned = 0;
+    }
+
+    private void RecordEnemyEndReached()
+    {
+        enemiesRemaining--;
+        if (enemiesRemaining <= 0)
+        {
+            // Wave Complete
+            StartCoroutine(NextWave());
+        }
+    }
+
+    private void OnEnable()
+    {
+        Enemy.OnEnemyReachedEnd += RecordEnemyEndReached;
+    }
+
+    private void OnDisable()
+    {
+        Enemy.OnEnemyReachedEnd -= RecordEnemyEndReached;
     }
 }

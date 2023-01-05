@@ -41,4 +41,9 @@ public class ObjectPooler : MonoBehaviour
         pooledObjects.Add(obj);
         return obj;
     }
+
+    public static void ReturToPool(GameObject instance)
+    {
+        instance.SetActive(false);
+    }
 }
