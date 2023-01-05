@@ -5,6 +5,10 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 10f;
+    [SerializeField] private float damage = 10f;
+    [SerializeField] private float minDistanceToDealDamage = 0.1f;
+
+    public TowerProjectile TowerOwner { get; set; }
 
     private Enemy enemyTarget;
 
@@ -20,6 +24,14 @@ public class Projectile : MonoBehaviour
     private void MoveProjectile()
     {
         transform.position = Vector2.MoveTowards(transform.position, enemyTarget.transform.position, moveSpeed * Time.deltaTime);
+        float distanceToTarget = (enemyTarget.transform.position - transform.position).magnitude;
+        if (distanceToTarget <= minDistanceToDealDamage)
+        {
+            enemyTarget.EnemyHealth.DealDamage(damage);
+            TowerOwner.ResetTowerProjectile();
+            ObjectPooler.ReturnToPool(gameObject);
+        }
+
     }
 
     private void RotateProjectile()
@@ -32,5 +44,11 @@ public class Projectile : MonoBehaviour
     public void SetEnemy(Enemy enemy)
     {
         enemyTarget = enemy;
+    }
+
+    public void ResetProjectile()
+    {
+        enemyTarget = null;
+        transform.localRotation = Quaternion.identity;
     }
 }

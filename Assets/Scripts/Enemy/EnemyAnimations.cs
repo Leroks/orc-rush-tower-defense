@@ -46,7 +46,7 @@ public class EnemyAnimations : MonoBehaviour
         yield return new WaitForSeconds(GetCurrentAnimationLength() + 0.3f);
         enemy.ResumeMovement();
         enemyHealth.ResetHealth();
-        ObjectPooler.ReturToPool(enemy.gameObject);
+        ObjectPooler.ReturnToPool(enemy.gameObject);
     }
 
     private void EnemyHit(Enemy enemy)

@@ -104,7 +104,7 @@ public class Enemy : MonoBehaviour
     {
         OnEnemyReachedEnd?.Invoke(this);
         enemyHealth.ResetHealth();
-        ObjectPooler.ReturToPool(gameObject);
+        ObjectPooler.ReturnToPool(gameObject);
     }
 
     public void ResetEnemy()
