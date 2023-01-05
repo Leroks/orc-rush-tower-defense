@@ -90,7 +90,7 @@ public class Spawner : MonoBehaviour
         enemiesSpawned = 0;
     }
 
-    private void RecordEnemy()
+    private void RecordEnemy(Enemy enemy)
     {
         enemiesRemaining--;
         if (enemiesRemaining <= 0)
