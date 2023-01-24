@@ -598,13 +598,14 @@ GameObject:
   - component: {fileID: 780075363}
   - component: {fileID: 780075362}
   - component: {fileID: 780075360}
+  - component: {fileID: 780075364}
   m_Layer: 0
   m_Name: OneMissileTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &780075359
 Transform:
   m_ObjectHideFlags: 0
@@ -679,6 +680,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawnPosition: {fileID: 588769923}
   delayBetweenAttacks: 2
+  damage: 10
+--- !u!114 &780075364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780075358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bf147641ff87cc4ca672cd7a9020973, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeInitialCost: 0
+  upgradeCostIncremental: 0
+  damageIncremental: 2
+  delayReduce: 0.1
 --- !u!1 &780145105
 GameObject:
   m_ObjectHideFlags: 0
@@ -1065,13 +1083,14 @@ GameObject:
   - component: {fileID: 1092564547}
   - component: {fileID: 1092564543}
   - component: {fileID: 1092564542}
+  - component: {fileID: 1092564548}
   m_Layer: 0
   m_Name: SingleMachineTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!58 &1092564542
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1146,8 +1165,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawnPosition: {fileID: 1400096132}
   delayBetweenAttacks: 0.2
+  damage: 10
   isDualMachine: 0
   spreadRange: 0
+--- !u!114 &1092564548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092564541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bf147641ff87cc4ca672cd7a9020973, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeInitialCost: 0
+  upgradeCostIncremental: 0
+  damageIncremental: 0
+  delayReduce: 0
 --- !u!1 &1196353028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1161,6 +1197,7 @@ GameObject:
   - component: {fileID: 1196353031}
   - component: {fileID: 1196353030}
   - component: {fileID: 1196353029}
+  - component: {fileID: 1196353034}
   m_Layer: 0
   m_Name: UltraMissileTower
   m_TagString: Untagged
@@ -1212,6 +1249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawnPosition: {fileID: 1492800295}
   delayBetweenAttacks: 2
+  damage: 10
 --- !u!114 &1196353032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1242,6 +1280,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1196353034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196353028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bf147641ff87cc4ca672cd7a9020973, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeInitialCost: 0
+  upgradeCostIncremental: 0
+  damageIncremental: 0
+  delayReduce: 0
 --- !u!1 &1237548380
 GameObject:
   m_ObjectHideFlags: 0
@@ -1817,6 +1871,7 @@ GameObject:
   - component: {fileID: 1706446913}
   - component: {fileID: 1706446909}
   - component: {fileID: 1706446908}
+  - component: {fileID: 1706446914}
   m_Layer: 0
   m_Name: DualMachineTower
   m_TagString: Untagged
@@ -1898,8 +1953,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawnPosition: {fileID: 210713211}
   delayBetweenAttacks: 0.2
+  damage: 10
   isDualMachine: 1
   spreadRange: 5
+--- !u!114 &1706446914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706446907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bf147641ff87cc4ca672cd7a9020973, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeInitialCost: 0
+  upgradeCostIncremental: 0
+  damageIncremental: 0
+  delayReduce: 0
 --- !u!1 &1732609512
 GameObject:
   m_ObjectHideFlags: 0
@@ -2081,6 +2153,7 @@ GameObject:
   - component: {fileID: 1770876151}
   - component: {fileID: 1770876150}
   - component: {fileID: 1770876149}
+  - component: {fileID: 1770876154}
   m_Layer: 0
   m_Name: TwoMissileTower
   m_TagString: Untagged
@@ -2132,6 +2205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawnPosition: {fileID: 143934168}
   delayBetweenAttacks: 2
+  damage: 10
 --- !u!114 &1770876152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2162,6 +2236,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1770876154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770876148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bf147641ff87cc4ca672cd7a9020973, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeInitialCost: 0
+  upgradeCostIncremental: 0
+  damageIncremental: 0
+  delayReduce: 0
 --- !u!1 &1810214670
 GameObject:
   m_ObjectHideFlags: 0
@@ -2392,6 +2482,7 @@ GameObject:
   - component: {fileID: 2139894262}
   - component: {fileID: 2139894258}
   - component: {fileID: 2139894257}
+  - component: {fileID: 2139894263}
   m_Layer: 0
   m_Name: TankTower
   m_TagString: Untagged
@@ -2473,3 +2564,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawnPosition: {fileID: 807253396}
   delayBetweenAttacks: 0.5
+  damage: 10
+--- !u!114 &2139894263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139894256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bf147641ff87cc4ca672cd7a9020973, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeInitialCost: 0
+  upgradeCostIncremental: 0
+  damageIncremental: 0
+  delayReduce: 0

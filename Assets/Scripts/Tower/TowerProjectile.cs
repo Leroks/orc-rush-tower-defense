@@ -6,6 +6,10 @@ public class TowerProjectile : MonoBehaviour
 {
     [SerializeField] protected Transform projectileSpawnPosition;
     [SerializeField] protected float delayBetweenAttacks = 2f;
+    [SerializeField] protected float damage = 10f;
+
+    public float Damage { get; set; }
+    public float DelayPerShot { get; set; }
 
     protected float nextAttackTime;
     protected ObjectPooler objectPooler;
@@ -18,6 +22,8 @@ public class TowerProjectile : MonoBehaviour
         tower = GetComponent<Tower>();
         objectPooler = GetComponent<ObjectPooler>();
 
+        DelayPerShot = delayBetweenAttacks;
+        Damage = damage;
         LoadProjectile();
     }
 
@@ -37,7 +43,7 @@ public class TowerProjectile : MonoBehaviour
                 currentProjectileLoaded.SetEnemy(tower.CurrentEnemyTarget);
             }
 
-            nextAttackTime = Time.time + delayBetweenAttacks;
+            nextAttackTime = Time.time + DelayPerShot;
         }
 
     }
@@ -51,6 +57,7 @@ public class TowerProjectile : MonoBehaviour
         currentProjectileLoaded = newInstance.GetComponent<Projectile>();
         currentProjectileLoaded.TowerOwner = this;
         currentProjectileLoaded.ResetProjectile();
+        currentProjectileLoaded.Damage = Damage;
         newInstance.SetActive(true);
     }
 

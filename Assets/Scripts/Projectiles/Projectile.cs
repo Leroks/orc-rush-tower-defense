@@ -8,10 +8,10 @@ public class Projectile : MonoBehaviour
     public static Action<Enemy, float> OnEnemyHit;
 
     [SerializeField] protected float moveSpeed = 10f;
-    [SerializeField] protected float damage = 10f;
     [SerializeField] private float minDistanceToDealDamage = 0.1f;
 
     public TowerProjectile TowerOwner { get; set; }
+    public float Damage { get; set; }
 
     protected Enemy enemyTarget;
 
@@ -30,8 +30,8 @@ public class Projectile : MonoBehaviour
         float distanceToTarget = (enemyTarget.transform.position - transform.position).magnitude;
         if (distanceToTarget <= minDistanceToDealDamage)
         {
-            OnEnemyHit?.Invoke(enemyTarget, damage);
-            enemyTarget.EnemyHealth.DealDamage(damage);
+            OnEnemyHit?.Invoke(enemyTarget, Damage);
+            enemyTarget.EnemyHealth.DealDamage(Damage);
             TowerOwner.ResetTowerProjectile();
             ObjectPooler.ReturnToPool(gameObject);
         }
