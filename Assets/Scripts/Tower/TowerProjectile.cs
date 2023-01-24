@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class TowerProjectile : MonoBehaviour
 {
-    [SerializeField] private Transform projectileSpawnPosition;
-    [SerializeField] private float delayBetweenAttacks = 2f;
+    [SerializeField] protected Transform projectileSpawnPosition;
+    [SerializeField] protected float delayBetweenAttacks = 2f;
 
-    private float nextAttackTime;
-    private ObjectPooler objectPooler;
-    private Tower tower;
-    private Projectile currentProjectileLoaded;
+    protected float nextAttackTime;
+    protected ObjectPooler objectPooler;
+    protected Tower tower;
+    protected Projectile currentProjectileLoaded;
 
 
     private void Start()
@@ -21,7 +21,7 @@ public class TowerProjectile : MonoBehaviour
         LoadProjectile();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (IsTowerEmpty())
         {
@@ -42,7 +42,7 @@ public class TowerProjectile : MonoBehaviour
 
     }
 
-    private void LoadProjectile()
+    protected virtual void LoadProjectile()
     {
         GameObject newInstance = objectPooler.GetPooledObject();
         newInstance.transform.localPosition = projectileSpawnPosition.position;
