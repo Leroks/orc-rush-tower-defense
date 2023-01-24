@@ -32,6 +32,7 @@ public class TankTowerProjectile : TowerProjectile
         currentProjectileLoaded.TowerOwner = this;
         currentProjectileLoaded.ResetProjectile();
         currentProjectileLoaded.SetEnemy(enemy);
+        currentProjectileLoaded.Damage = Damage;
         instance.SetActive(true);
     }
 }

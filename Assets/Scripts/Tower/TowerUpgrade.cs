@@ -9,12 +9,15 @@ public class TowerUpgrade : MonoBehaviour
     [SerializeField] private float damageIncremental;
     [SerializeField] private float delayReduce;
 
+    public int UpgradeCost { get; set; }
+
     private TowerProjectile towerProjectile;
 
     // Start is called before the first frame update
     void Start()
     {
         towerProjectile = GetComponent<TowerProjectile>();
+        UpgradeCost = upgradeInitialCost;
     }
 
     private void Update()
@@ -28,7 +31,18 @@ public class TowerUpgrade : MonoBehaviour
 
     private void UpgradeTower()
     {
-        towerProjectile.Damage += damageIncremental;
-        towerProjectile.DelayPerShot -= delayReduce;
+        if (CurrencySystem.Instance.TotalCoins >= UpgradeCost)
+        {
+            towerProjectile.Damage += damageIncremental;
+            towerProjectile.DelayPerShot -= delayReduce;
+            UpdateUpgrade();
+        }
+
+    }
+
+    private void UpdateUpgrade()
+    {
+        CurrencySystem.Instance.RemoveCoins(UpgradeCost);
+        UpgradeCost += upgradeCostIncremental;
     }
 }
