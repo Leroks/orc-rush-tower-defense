@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,8 @@ public class TowerShopManager : MonoBehaviour
     [Header("Tower Settings")]
     [SerializeField] private TowerSettings[] towers;
 
-    // Start is called before the first frame update
+    private Node currentNodeSelected;
+
     void Start()
     {
         for (int i = 0; i < towers.Length; i++)
@@ -27,5 +29,37 @@ public class TowerShopManager : MonoBehaviour
 
         TowerCard cardButton = newInstance.GetComponent<TowerCard>();
         cardButton.SetupTowerButton(towerSettings);
+    }
+
+
+    private void NodeSelected(Node nodeSelected)
+    {
+        currentNodeSelected = nodeSelected;
+    }
+
+    private void PlaceTower(TowerSettings towerLoaded)
+    {
+        if (currentNodeSelected != null)
+        {
+            GameObject towerInstance = Instantiate(towerLoaded.TowerPrefab);
+            towerInstance.transform.localPosition = currentNodeSelected.transform.position;
+            towerInstance.transform.parent = currentNodeSelected.transform;
+
+            Tower towerPlaced = towerInstance.GetComponent<Tower>();
+            currentNodeSelected.SetTower(towerPlaced);
+        }
+    }
+
+
+    private void OnEnable()
+    {
+        Node.OnNodeSelected += NodeSelected;
+        TowerCard.OnTowerPlaced += PlaceTower;
+    }
+
+    private void OnDisable()
+    {
+        Node.OnNodeSelected -= NodeSelected;
+        TowerCard.OnTowerPlaced -= PlaceTower;
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,24 +7,28 @@ using UnityEngine.UI;
 
 public class TowerCard : MonoBehaviour
 {
+    public static Action<TowerSettings> OnTowerPlaced;
+
     [SerializeField] private Image towerImage;
     [SerializeField] private TextMeshProUGUI towerCost;
 
+    public TowerSettings TowerLoaded { get; set; }
+
     public void SetupTowerButton(TowerSettings towerSettings)
     {
+        TowerLoaded = towerSettings;
         towerImage.sprite = towerSettings.TowerShopSprite;
         towerCost.text = towerSettings.TowerShopCost.ToString();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void PlaceTower()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        if (CurrencySystem.Instance.TotalCoins >= TowerLoaded.TowerShopCost)
+        {
+            Debug.Log(CurrencySystem.Instance.TotalCoins);
+            CurrencySystem.Instance.RemoveCoins(TowerLoaded.TowerShopCost);
+            UIManager.Instance.CloseTowerShopPanel();
+            OnTowerPlaced?.Invoke(TowerLoaded);
+        }
     }
 }
