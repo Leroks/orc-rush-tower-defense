@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 964493956b9750c41b3961636c73a3b5, type: 3}
+  m_Name: UltraMissileTower
+  m_EditorClassIdentifier: 
+  TowerPrefab: {fileID: 6384421382045158763, guid: 28a1a9985e819864595289b4ecd64291, type: 3}
+  TowerShopCost: 10
+  TowerShopSprite: {fileID: 21300000, guid: 6fcdd863cd8efdb498a2e0352eacff77, type: 3}

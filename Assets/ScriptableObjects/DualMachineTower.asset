@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 964493956b9750c41b3961636c73a3b5, type: 3}
+  m_Name: DualMachineTower
+  m_EditorClassIdentifier: 
+  TowerPrefab: {fileID: 4985151918208040437, guid: 0138b952f9ae5984a8bee673f08a740f, type: 3}
+  TowerShopCost: 10
+  TowerShopSprite: {fileID: 21300000, guid: 45fddce9137deca408fea85c6a524e97, type: 3}
